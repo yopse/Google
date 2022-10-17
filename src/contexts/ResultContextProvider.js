@@ -1,26 +1,31 @@
-import React, { createContext, useContext, useState } from "React";
+import React, { createContext, useContext, useState } from "react";
 
 const ResultContext = createContext();
 
-const basrUrl = "https://google-search64.p.rapidapi.com";
+// GET https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
+
+// cURL "https://api.serpdog.io/images?api_key=APIKEY&q=football&gl=us"
+const baseUrl = "https://api.serpdog.io/";
 
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("Apple");
 
-  const getResults = async (type) => {
+  const getResults = async (url) => {
     setIsLoading(true);
 
-    const response = await fetch(`${baseUrl}${type}`, {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "ff0e44532cmsh2e7b11463919f79p1be072jsn230177bef688",
-        "X-RapidAPI-Host": "google-search64.p.rapidapi.com",
-      },
-    });
+    // const res = await fetch(`${baseUrl}${url}`, {
+    //   method: "GET",
+    //   headers: {
+    //     "X-RapidAPI-Key": "b040bf28a1msh547a2b3067bbfeap1d130cjsn71f6cdb19e16",
+    //     "X-RapidAPI-Host": "google-search64.p.rapidapi.com",
+    //   },
+    // });
 
-    const data = await response.json();
+    const res = await fetch(`${baseUrl}${url}`);
+    const data = await res.json();
+    console.log(data, "resultsContextProvider");
 
     setResults(data);
     setIsLoading(false);
@@ -34,3 +39,5 @@ export const ResultContextProvider = ({ children }) => {
     </ResultContext.Provider>
   );
 };
+
+export const useResultContext = () => useContext(ResultContext);
