@@ -56,7 +56,6 @@
 - [x] user-debounce
 - [x] react-player
 - [x] react-loader-spinner
-- [x] craco
 - [x] trailwindcss
 
 <br>
