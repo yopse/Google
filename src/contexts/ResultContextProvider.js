@@ -5,12 +5,16 @@ const ResultContext = createContext();
 // GET https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
 
 // cURL "https://api.serpdog.io/images?api_key=APIKEY&q=football&gl=us"
-const baseUrl = "https://api.serpdog.io/";
+// https://api.valueserp.com/search?api_key=10FC4537531C412C92249FC4810F53CD&q=pizza&location=Paris,Ile-de-France,France
+
+// const baseUrl = "https://serpapi.com";
+
+const baseUrl = "https://api.scaleserp.com";
 
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("Apple");
+  const [searchTerm, setSearchTerm] = useState("samsung");
 
   const getResults = async (url) => {
     setIsLoading(true);
@@ -25,7 +29,6 @@ export const ResultContextProvider = ({ children }) => {
 
     const res = await fetch(`${baseUrl}${url}`);
     const data = await res.json();
-    console.log(data, "resultsContextProvider");
 
     setResults(data);
     setIsLoading(false);
