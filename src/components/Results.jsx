@@ -20,12 +20,12 @@ export const Results = () => {
       if (searchTerm !== "") {
         if (location.pathname === "/search") {
           getResults(
-            `${location.pathname}?api_key=FB737E93E3A849DF8A233833C44C46B2&q=${searchTerm}&num=18&lr=lang_en&hl=en`
+            `${location.pathname}?api_key=${process.env.REACT_APP_BART_API_KEY}&q=${searchTerm}&num=18&lr=lang_en&hl=en`
           );
         } else {
           let s = location.pathname.slice(1);
           getResults(
-            `/search?api_key=FB737E93E3A849DF8A233833C44C46B2&search_type=${s}&q=${searchTerm}&num=18&lr=lang_en&location=United+States`
+            `/search?api_key=${process.env.REACT_APP_BART_API_KEY}&search_type=${s}&q=${searchTerm}&num=18&lr=lang_en&location=United+States`
           );
         }
       }
