@@ -10,7 +10,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cceb580b-03ba-4b7f-8d73-b779d3de4d9a/deploy-status)](https://app.netlify.com/sites/google-clone-with-jsm/deploys)
 
-https://google-clone-with-jsm.netlify.app/
+
 
 <br>
 
